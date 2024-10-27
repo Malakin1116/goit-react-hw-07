@@ -6,6 +6,8 @@ export const slice = createSlice({
   name: "contacts",
   initialState: {
     items: [],
+    loading: false,
+    error: null,
   },
   reducers: {
     addContact: (state, action) => {
@@ -14,6 +16,9 @@ export const slice = createSlice({
     deleteContact: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase();
   },
 });
 
