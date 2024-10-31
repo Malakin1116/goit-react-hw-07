@@ -7,8 +7,6 @@ export default function ContactList() {
   const contacts = useSelector((state) => state.contacts.items);
   const filterValue = useSelector(selectFilter);
 
-  console.log(filterValue);
-
   const filteredContacts = contacts.filter((value) =>
     value.name
       ?.toLocaleLowerCase()
