@@ -11,9 +11,9 @@ export const slice = createSlice({
     error: null,
   },
   reducers: {
-    addContact: (state, action) => {
-      state.items.push(action.payload);
-    },
+    // addContact: (state, action) => {
+    //   state.items.push(action.payload);
+    // },
     deleteContact: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
@@ -22,12 +22,16 @@ export const slice = createSlice({
     builder
       .addCase(fetchContacts.pending, (state) => {
         state.loading = true;
+        state.error = false;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.items = action.payload;
         state.loading = false;
       })
-      .addCase(fetchContacts.rejected, (state, action) => {});
+      .addCase(fetchContacts.rejected, (state) => {
+        state.loading = false;
+        state.error = true;
+      });
   },
 });
 
