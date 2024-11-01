@@ -5,6 +5,7 @@ import SearchBox from "./SearchBox/SearchBox";
 import { useEffect } from "react";
 
 import { fetchContacts } from "../../redux/contactsOps";
+import { SelectErrorData, SelectLoadingData } from "../../redux/contactsSlice";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -13,17 +14,16 @@ export default function App() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const error = useSelector((state) => state.contacts.error);
-  const loading = useSelector((state) => state.contacts.loading);
+  const error = useSelector(SelectErrorData);
+  const loading = useSelector(SelectLoadingData);
 
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox />
-      {loading && <p>Error message</p>}
-      {error && <p>Error message</p>}
-      <ContactList />
+      {loading && <p>Loading ......</p>}
+      {!error && <ContactList />}
     </div>
   );
 }

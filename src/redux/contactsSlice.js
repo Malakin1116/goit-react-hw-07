@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./contactsOps";
 
 export const userData = (state) => state.contacts.items;
+export const SelectErrorData = (state) => state.contacts.error;
+export const SelectLoadingData = (state) => state.contacts.loading;
 
 export const slice = createSlice({
   name: "contacts",
