@@ -59,8 +59,6 @@ export default slice.reducer;
 export const selectFilteredContacts = createSelector(
   [userData, selectFilter],
   (contacts, filterValue) => {
-    console.log("selectFilteredContacts" + Date.now());
-
     return contacts.filter((value) =>
       value.name
         ?.toLocaleLowerCase()
